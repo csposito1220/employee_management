@@ -3,12 +3,14 @@
 
 <h1>List of Employees</h1>
 {% for employee in employees %}
-  <div class="card">
-    <div class="card-content">
-      <span class="card-title">{{ employee.name }}</span>
-      <p>Position: {{ employee.position }}</p>
-    
+  <a href="/employees/{{ employee.id }}">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">{{ employee.name }}</span>
+        <!-- <p>Position: {{ employee.position }}</p> -->
+      
+      </div>
     </div>
-  </div>
+  </a>
 {% endfor %}
 {% endblock %}
