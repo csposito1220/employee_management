@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -22,7 +22,15 @@ def employees_details(request, employee_id):
 
 class SkillList(ListView):
     model = Skill
-    template_name = 'main_app/skill-list.html'
+    template_name = 'main_app/skill_list.html'
+
+class SkillCreate(CreateView):
+    model = Skill
+    fields = '__all__'
+    template_name = 'main_app/skill_form.html'
+    success_url = '/skills'
+
+
 
 class ProfileCreate(LoginRequiredMixin, CreateView):
     model = Profile

@@ -24,7 +24,7 @@ class Employee(models.Model):
 
 class Skill(models.Model):
     name = models.CharField(max_length=100)
-    date= models.DateField()
+    pay_increase = models.DecimalField(max_digits=5, decimal_places=2)
 
     def __str__(self):
         return self.name
