@@ -3,7 +3,8 @@ from django.contrib.auth.models import User
 
 
 # Create your models here.   
-class User(models.Model):
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     email = models.CharField(max_length=100)
     # Going to try ImageField, but can just make them add an image in 'detail' just like in catcollector
