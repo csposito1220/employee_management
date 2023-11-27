@@ -1,32 +1,32 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Employee Management</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style.css' %}"
+    />
+  </head>
+  <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="/">Employee Management</a></li>
-            </ul>
-            <ul>
-                <li><a href="/about">About</a></li>
-            </ul>
-            <ul>
-                <li><a href="/employees">View All Employees</a></li>
-            </ul>
-            <ul>
-                <li><a href="/skills">All Skills</a></li>
-            </ul>
-        </nav>
+      <nav>
+        <ul>
+          <li><a href="/about">About</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="/">Employee Management</a></li>
+          <li><a href="/employees">View All Employees</a></li>
+          <li><a href="/skills">All Skills</a></li>
+          <li><a href="{% url 'logout' %}">Log Out</a></li>
+          {% else %}
+          <li><a href="{% url 'login' %}">Log In</a></li>
+          {% endif %}
+        </ul>
+      </nav>
     </header>
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
-</body>
+    <main>{% block content %} {% endblock %}</main>
+  </body>
 </html>
