@@ -13,4 +13,5 @@ def employees_index(request):
     })
 def employees_details(request, employee_id):
     employee = Employee.objects.get(id=employee_id)
-    
+    return render(request, 'employees/detail.html', { 'employee': employee})
+
