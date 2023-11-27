@@ -2,9 +2,20 @@
 {% block content %}
 
 <h1>All Skills</h1>
-<ul>
-{% for skill in object_list %}
-    <li> {{skill.name}}</li>
-{% endfor %}
-</ul>
+<table>
+    <thead>
+      <tr>
+        <th>Skill</th>
+        <th>Pay Increase</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for skill in object_list %}
+        <tr>
+          <td>{{ skill.name }}</td>
+          <td>{{ skill.pay_increase }}%</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 {% endblock %}
