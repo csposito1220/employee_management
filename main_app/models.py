@@ -11,3 +11,11 @@ class User(models.Model):
         max_length=1,
         default=False
     )
+
+class User(models.Model):
+    name = models.CharField(max_length=50)
+    age = models.IntegerField()
+    years_employed = models.IntegerField()
+    # skills = models.ManyToManyField(Skill)
+    # availibility = 
+    # position = 
