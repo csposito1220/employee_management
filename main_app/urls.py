@@ -8,4 +8,5 @@ urlpatterns = [
     path("employees/<int:employee_id>/", views.employees_details, name="detail"),
     path('skills/', views.SkillList.as_view(), name='skills_index'),
     path('skills/create/', views.SkillCreate.as_view(), name='skill_create'),
+    
 ]
