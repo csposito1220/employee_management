@@ -1,6 +1,14 @@
-from django.shortcuts import render
+import uuid
+import boto3
+import os
+from django.shortcuts import render, redirect
+from django.views.generic.edit import CreateView
 from django.views.generic import ListView
-from .models import Skill, Employee
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import Skill, Employee, User
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
@@ -18,3 +26,11 @@ def employees_details(request, employee_id):
 class SkillList(ListView):
     model = Skill
     template_name = 'main_app/skill-list.html'
+
+class UserCreate(LoginRequireMixin, CreateView):
+    model = User
+    fields = []
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
