@@ -23,4 +23,5 @@ class SkillCreate(CreateView):
     model = Skill
     fields = '__all__'
     template_name = 'main_app/skill_form.html'
+    success_url = '/skills'
 
