@@ -21,7 +21,7 @@ class Employee(models.Model):
 
 class Skill(models.Model):
     name = models.CharField(max_length=100)
-    date= models.DateField()
+    date= models.DateField('Date Earned')
 
     def __str__(self):
         return self.name
