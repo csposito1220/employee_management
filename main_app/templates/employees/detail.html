@@ -1,13 +1,61 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <h1>Employee Details</h1>
-        <div class="card">
-            <div class="card-content">
-            <span class="card-title">{{ employee.name }}</span>
-            <p>Age: {{ employee.age }}</p>
-            <p>Years Employed: {{ employee.years_employed }}</p>
-            </div>
-        </div>
+<h1>Employee Details</h1>
+<div class="card">
+    <div class="card-content">
+    <span class="card-title">{{ employee.name }}</span>
+    <p>Age: {{ employee.age }}</p>
+    <p>Years Employed: {{ employee.years_employed }}</p>
+    </div>
+</div>
+
+<hr>
+<div class="row">
+    <div class="sCol">
+        <h3>{{ employee.name }}'s Skills'</h3>
+        {% if employee.skills.count %}
+            {% for skill in employee.skills.all %}
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">
+                        <h4>{{ skill.name }}</h4>
+                        Pay Increase: {{ skill.pay_increase }}%
+                        </span>
+                    </div>
+                    <div class="card-action">
+                        <form action="{% url 'unassoc_skill' employee.id skill.id %}" method="POST">
+                          {% csrf_token %}
+                          <button type="submit" class="btn">Remove</button>
+                        </form>
+                      </div>
+                </div>
+            {% endfor %}
+        {% else %}
+        <h5>No Skills</h5>
+        {% endif %}
+    </div>
+    <div class="sCol">
+        <h3>Available Skills</h3>
+        {% if skills.count %}
+            <form action="{% url 'assoc_skill' employee.id %}" method="POST">
+                {% csrf_token %}
+                <div class="input-field">
+                    <select name="skill_id">
+                        {% for skill in skills.all %}
+                            <option value="{{ skill.id }}">
+                                {{ skill.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn">Add</button>
+            </form>
+
+        {% else %}
+        <h5>{{ employee.name }} Already Has All Skills Available</h5>
+        {% endif %}
+    </div>
+</div>
 
 {% endblock %}

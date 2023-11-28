@@ -10,4 +10,6 @@ urlpatterns = [
     path('skills/create/', views.SkillCreate.as_view(), name='skill_create'),
     
     path('accounts/signup/', views.signup, name='signup'),
+    path('employees/<int:employee_id>/assoc_skill/', views.assoc_skill, name='assoc_skill'),
+    path('employees/<int:employee_id>/unassoc_skill/<int:skill_id>/', views.unassoc_skill, name='unassoc_skill'),
 ]
