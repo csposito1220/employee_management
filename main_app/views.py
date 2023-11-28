@@ -19,7 +19,14 @@ def employees_index(request):
     })
 def employees_details(request, employee_id):
     employee = Employee.objects.get(id=employee_id)
-    return render(request, 'employees/detail.html', { 'employee': employee})
+    id_list = employee.skills.all().values_list('id')
+    skills_employee_doesnt_have = Skill.objects.exclude(id__in=id_list)
+    return render(request, 'employees/detail.html', { 'employee': employee,
+    'skills': skills_employee_doesnt_have,                                              
+    })
+    
+    
+    
 
 class SkillList(ListView):
     model = Skill
@@ -61,3 +68,12 @@ def signup(request):
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
+
+def assoc_skill(request, employee_id):
+    if request.method == 'POST':
+        skill_id = request.POST.get('skill_id')
+        Employee.objects.get(id=employee_id).skills.add(skill_id)
+        return redirect('detail', employee_id=employee_id)
+def unassoc_skill(request, employee_id, skill_id):
+    Employee.objects.get(id=employee_id).skills.remove(skill_id)
+    return redirect("detail", employee_id=employee_id)
