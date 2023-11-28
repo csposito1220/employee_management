@@ -1,6 +1,6 @@
 import os
 from django.shortcuts import render, redirect
-from django.views.generic.edit import CreateView, DeleteView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic import ListView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -34,6 +34,10 @@ class SkillCreate(CreateView):
 class SkillDelete(DeleteView):
    model = Skill
    success_url = '/skills'
+
+class SkillUpdate(UpdateView):
+   model = Skill
+   fields = ['name', 'pay_increase']
 
 class ProfileCreate(LoginRequiredMixin, CreateView):
     model = Profile
