@@ -38,6 +38,7 @@ class SkillDelete(DeleteView):
 class SkillUpdate(UpdateView):
    model = Skill
    fields = ['name', 'pay_increase']
+   success_url = '/skills'
 
 class ProfileCreate(LoginRequiredMixin, CreateView):
     model = Profile
