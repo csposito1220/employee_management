@@ -3,21 +3,24 @@ from django.contrib.auth.models import User
 
 
 # Create your models here.   
-class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=50)
-    email = models.CharField(max_length=100)
-    # Going to try ImageField, but can just make them add an image in 'detail' just like in catcollector
-    # avatar = models.ImageField()
-    admin = models.BooleanField(
-        max_length=1,
-        default=False
-    )
+# class Profile(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE)
+#     name = models.CharField(max_length=50)
+#     email = models.CharField(max_length=100)
+#     # Going to try ImageField, but can just make them add an image in 'detail' just like in catcollector
+#     # avatar = models.ImageField()
+#     admin = models.BooleanField(
+#         max_length=1,
+#         default=False
+#     )
 
 class Employee(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     age = models.IntegerField()
     years_employed = models.IntegerField()
+    email = models.EmailField()
+    is_employee_superuser = models.BooleanField(default=False)
     # skills = models.ManyToManyField(Skill)
     # availibility = 
     # position = 
