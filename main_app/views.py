@@ -1,12 +1,13 @@
 import os
+from django import forms
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic import ListView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.decorators import login_required, user_passes_test
 from .models import Skill, Employee
 # Create your views here.
 def home(request):
@@ -28,11 +29,14 @@ def employees_details(request, employee_id):
     
     
     
-
-class EmployeeCreate(LoginRequiredMixin, CreateView):
+class EmployeeCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
    model = Employee
    fields = '__all__'
    success_url = '/employees'
+
+   def test_func(self):
+        # The user passes the test if they are a superuser
+        return self.request.user.is_superuser
 
 
 
@@ -40,20 +44,29 @@ class SkillList(ListView):
     model = Skill
     template_name = 'main_app/skill_list.html'
 
-class SkillCreate(CreateView):
+class SkillCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Skill
     fields = '__all__'
     template_name = 'main_app/skill_form.html'
     success_url = '/skills'
 
-class SkillDelete(DeleteView):
+
+class SkillDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
    model = Skill
    success_url = '/skills'
 
-class SkillUpdate(UpdateView):
+
+class SkillUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
    model = Skill
    fields = ['name', 'pay_increase']
    success_url = '/skills'
+
+class SignupForm(UserCreationForm):
+   is_superuser = forms.BooleanField(required=False)
+   class Meta:
+      model = User
+      fields = ['username', 'email', 'password1', 'password2', 'is_superuser']
+    
 
     
 def signup(request):
