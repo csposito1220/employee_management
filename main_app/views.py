@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from django.views.generic.edit import CreateView
-from django.views.generic import ListView, CreateView
+from django.views.generic.edit import CreateView, DeleteView
+from django.views.generic import ListView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -30,7 +30,9 @@ class SkillCreate(CreateView):
     template_name = 'main_app/skill_form.html'
     success_url = '/skills'
 
-
+class SkillDelete(DeleteView):
+   model = Skill
+   success_url = '/skills'
 
 class ProfileCreate(LoginRequiredMixin, CreateView):
     model = Profile
