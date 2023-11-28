@@ -7,6 +7,8 @@
       <tr>
         <th>Skill</th>
         <th>Pay Increase</th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -14,6 +16,18 @@
         <tr>
           <td>{{ skill.name }}</td>
           <td>{{ skill.pay_increase }}%</td>
+          <td>
+            <form method="post" action="{% url 'skills_delete' skill.id %}">
+              {% csrf_token %}
+              <button type="submit">Delete</button>
+            </form>
+          </td>
+          <td>
+            <form method="post" action="{% url 'skills_update' skill.id %}">
+              {% csrf_token %}
+              <button type="submit">Edit</button>
+            </form>
+          </td>
         </tr>
       {% endfor %}
     </tbody>
