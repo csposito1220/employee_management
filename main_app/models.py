@@ -14,17 +14,20 @@ class Profile(models.Model):
         default=False
     )
 
-class Employee(models.Model):
-    name = models.CharField(max_length=50)
-    age = models.IntegerField()
-    years_employed = models.IntegerField()
-    # skills = models.ManyToManyField(Skill)
-    # availibility = 
-    # position = 
 
 class Skill(models.Model):
     name = models.CharField(max_length=100)
     pay_increase = models.DecimalField(max_digits=5, decimal_places=2)
 
+    def __str__(self):
+        return self.name
+    
+class Employee(models.Model):
+    name = models.CharField(max_length=50)
+    age = models.IntegerField()
+    years_employed = models.IntegerField()
+    skills = models.ManyToManyField(Skill)
+    # availibility = 
+    # position = 
     def __str__(self):
         return self.name
