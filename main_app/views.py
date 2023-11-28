@@ -4,9 +4,10 @@ from django.views.generic.edit import CreateView
 from django.views.generic import ListView, CreateView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Skill, Employee, Profile
+from .models import Skill, Employee
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
@@ -24,6 +25,9 @@ def employees_details(request, employee_id):
 class EmployeeCreate(LoginRequiredMixin, CreateView):
    model = Employee
    fields = '__all__'
+   success_url = '/employees'
+
+
 
 class SkillList(ListView):
     model = Skill
@@ -36,14 +40,6 @@ class SkillCreate(CreateView):
     success_url = '/skills'
 
 
-
-class ProfileCreate(LoginRequiredMixin, CreateView):
-    model = Profile
-    fields = []
-
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super().form_valid(form)
     
 def signup(request):
   error_message = ''

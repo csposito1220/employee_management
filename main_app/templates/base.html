@@ -19,6 +19,7 @@
           {% if user.is_authenticated %}
           <li><a href="/">Employee Management</a></li>
           <li><a href="/employees">View All Employees</a></li>
+          <li><a href="{% url 'employee_create' %}">Create Employee</a></li>
           <li><a href="/skills">All Skills</a></li>
           <li><a href="/skills/create">Add Skill</a></li>
           <li><a href="{% url 'logout' %}">Log Out</a></li>
