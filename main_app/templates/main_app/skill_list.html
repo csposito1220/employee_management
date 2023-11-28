@@ -8,6 +8,7 @@
         <th>Skill</th>
         <th>Pay Increase</th>
         <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -19,6 +20,12 @@
             <form method="post" action="{% url 'skills_delete' skill.id %}">
               {% csrf_token %}
               <button type="submit">Delete</button>
+            </form>
+          </td>
+          <td>
+            <form method="post" action="{% url 'skills_update' skill.id %}">
+              {% csrf_token %}
+              <button type="submit">Edit</button>
             </form>
           </td>
         </tr>
