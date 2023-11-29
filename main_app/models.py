@@ -64,3 +64,10 @@ class Employee(models.Model):
         return self.name
     def get_absolute_url(self):
         return reverse('detail', kwargs={'employee_id': self.id})
+    
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Photo for employee_id: {self.employee_id} @{self.url}"
