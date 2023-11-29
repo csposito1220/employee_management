@@ -40,16 +40,16 @@ class Employee(models.Model):
         max_length=2,
         default=POSITIONS[0][0],
     )
-    monday_start = models.TimeField(blank=True, null=True, default='00:00')
-    monday_end = models.TimeField(blank=True, null=True,  default='00:00')
-    tuesday_start = models.TimeField(blank=True, null=True,  default='00:00')
-    tuesday_end = models.TimeField(blank=True, null=True,  default='00:00')
-    wednesday_start = models.TimeField(blank=True, null=True,  default='00:00')
-    wednesday_end = models.TimeField(blank=True, null=True,  default='00:00')
-    thursday_start = models.TimeField(blank=True, null=True,  default='00:00')
-    thursday_end = models.TimeField(blank=True, null=True,  default='00:00')
-    friday_start = models.TimeField(blank=True, null=True,  default='00:00')
-    friday_end = models.TimeField(blank=True, null=True,  default='00:00')
+    monday_start = models.TimeField(blank=True, null=True, default='08:00')
+    monday_end = models.TimeField(blank=True, null=True,  default='17:00')
+    tuesday_start = models.TimeField(blank=True, null=True,  default='08:00')
+    tuesday_end = models.TimeField(blank=True, null=True,  default='17:00')
+    wednesday_start = models.TimeField(blank=True, null=True,  default='8:00')
+    wednesday_end = models.TimeField(blank=True, null=True,  default='17:00')
+    thursday_start = models.TimeField(blank=True, null=True,  default='08:00')
+    thursday_end = models.TimeField(blank=True, null=True,  default='17:00')
+    friday_start = models.TimeField(blank=True, null=True,  default='08:00')
+    friday_end = models.TimeField(blank=True, null=True,  default='17:00')
     
     # position = 
     def __str__(self):
