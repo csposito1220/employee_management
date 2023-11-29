@@ -7,7 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Skill, Employee
+from .models import Skill, Employee, Availability
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
@@ -78,3 +78,12 @@ def assoc_skill(request, employee_id):
 def unassoc_skill(request, employee_id, skill_id):
     Employee.objects.get(id=employee_id).skills.remove(skill_id)
     return redirect("detail", employee_id=employee_id)
+class AvailabilityCreateView(CreateView):
+    model = Availability
+    form_class = AvailabilityForm  # Use the actual form for Availability
+    template_name = 'availability_form.html'
+    success_url = reverse_lazy('success_page')
+
+    def form_valid(self, form):
+        form.instance.employee = Employee.objects.get(user=self.request.user)
+        return super().form_valid(form)

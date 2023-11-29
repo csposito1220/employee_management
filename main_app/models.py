@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 # Create your models here.   
@@ -20,7 +21,13 @@ class Skill(models.Model):
 
     def __str__(self):
         return self.name
-class Availability(models.Model):
+
+    
+class Employee(models.Model):
+    name = models.CharField(max_length=50)
+    age = models.IntegerField()
+    years_employed = models.IntegerField()
+    skills = models.ManyToManyField(Skill)
     monday_start = models.TimeField(blank=True, null=True)
     monday_end = models.TimeField(blank=True, null=True)
     tuesday_start = models.TimeField(blank=True, null=True)
@@ -31,13 +38,8 @@ class Availability(models.Model):
     thursday_end = models.TimeField(blank=True, null=True)
     friday_start = models.TimeField(blank=True, null=True)
     friday_end = models.TimeField(blank=True, null=True)
-    
-class Employee(models.Model):
-    name = models.CharField(max_length=50)
-    age = models.IntegerField()
-    years_employed = models.IntegerField()
-    skills = models.ManyToManyField(Skill)
-    availability = models.OneToOneField(Availability, on_delete=models.CASCADE,null=True, blank=True)
     # position = 
     def __str__(self):
         return self.name
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'employee_id': self.id})
