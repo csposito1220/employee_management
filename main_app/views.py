@@ -166,7 +166,8 @@ def add_photo(request, employee_id):
             print(e)
     return redirect('detail', employee_id=employee_id)
 
-class PhotoDelete(DeleteView):
-   model = Photo
-   success_url = '/employees/employee_id'
+def delete_photo(request, employee_id, photo_id):
+    photo = Photo.objects.all(Photo, id=photo_id)
+    photo.delete()
+    return redirect('detail', employee_id=employee_id)
 
