@@ -78,12 +78,3 @@ def assoc_skill(request, employee_id):
 def unassoc_skill(request, employee_id, skill_id):
     Employee.objects.get(id=employee_id).skills.remove(skill_id)
     return redirect("detail", employee_id=employee_id)
-class AvailabilityCreateView(CreateView):
-    model = Availability
-    form_class = AvailabilityForm  # Use the actual form for Availability
-    template_name = 'availability_form.html'
-    success_url = reverse_lazy('success_page')
-
-    def form_valid(self, form):
-        form.instance.employee = Employee.objects.get(user=self.request.user)
-        return super().form_valid(form)
