@@ -16,4 +16,5 @@ urlpatterns = [
     path('employees/<int:employee_id>/unassoc_skill/<int:skill_id>/', views.unassoc_skill, name='unassoc_skill'),
     path('employees/create/', views.EmployeeCreate.as_view(), name='employee_create'),
     path('employees/<int:pk>/update/', views.EmployeeUpdate.as_view(), name='employees_update'),
+    path('employees/<int:pk>/delete/', views.EmployeeDelete.as_view(), name='employees_delete'),
 ]
