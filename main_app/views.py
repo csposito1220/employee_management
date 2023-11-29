@@ -165,3 +165,4 @@ def add_photo(request, employee_id):
             print('An error occurred uploading file to S3')
             print(e)
     return redirect('detail', employee_id=employee_id)
+
