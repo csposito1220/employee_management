@@ -50,16 +50,31 @@ class SkillCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     template_name = 'main_app/skill_form.html'
     success_url = '/skills'
 
+    def test_func(self):
+        # The user passes the test if they are a superuser
+        return self.request.user.is_superuser
+
+
 
 class SkillDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
    model = Skill
    success_url = '/skills'
+
+   def test_func(self):
+        # The user passes the test if they are a superuser
+        return self.request.user.is_superuser
+
 
 
 class SkillUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
    model = Skill
    fields = ['name', 'pay_increase']
    success_url = '/skills'
+
+   def test_func(self):
+        # The user passes the test if they are a superuser
+        return self.request.user.is_superuser
+
 
 class SignupForm(UserCreationForm):
    is_superuser = forms.BooleanField(required=False)
