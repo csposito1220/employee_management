@@ -8,7 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required, user_passes_test
-from .models import Skill, Employee
+from .models import Skill, Employee, Position
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
@@ -117,3 +117,34 @@ class EmployeeUpdate(UpdateView):
 class EmployeeDelete(DeleteView):
    model = Employee
    success_url = '/employees'
+
+class PositionList(ListView):
+    model = Position
+    template_name = 'main_app/position_list.html'
+
+class PositionCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+    model = Position
+    fields = '__all__'
+    template_name = 'main_app/position_form.html'
+    success_url = '/positions'
+
+    def test_func(self):
+        # The user passes the test if they are a superuser
+        return self.request.user.is_superuser
+
+class PositionUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+   model = Position
+   fields = ['name', 'salary', 'level']
+   success_url = '/positions'
+
+   def test_func(self):
+        # The user passes the test if they are a superuser
+        return self.request.user.is_superuser
+   
+class PositionDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+   model = Position
+   success_url = '/positions'
+
+   def test_func(self):
+        # The user passes the test if they are a superuser
+        return self.request.user.is_superuser

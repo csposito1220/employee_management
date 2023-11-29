@@ -21,10 +21,12 @@
           <li><a href="{% url 'admin' %}">Admin</a></li>
           <li><a href="{% url 'employee_create' %}">Create Employee</a></li>
           <li><a href="{% url 'skill_create' %}">Add Skill</a></li>
+          <li><a href="{% url 'position_create' %}">Add Position</a></li>
           {% else %}
           {% endif %}
           <li><a href="{% url 'index' %}">View All Employees</a></li>
           <li><a href="{% url 'skills_index' %}">All Skills</a></li>
+          <li><a href="{% url 'positions_index' %}">All Positions</a></li>
           <li><a href="{% url 'logout' %}">Log Out</a></li>
           {% else %}
           <li><a href="{% url 'signup' %}">Sign Up</a></li>
