@@ -78,3 +78,8 @@ def assoc_skill(request, employee_id):
 def unassoc_skill(request, employee_id, skill_id):
     Employee.objects.get(id=employee_id).skills.remove(skill_id)
     return redirect("detail", employee_id=employee_id)
+
+class EmployeeUpdate(UpdateView):
+   model = Employee
+   fields = ['name', 'age', 'years_employed', 'skills']
+   success_url = '/employees'
