@@ -14,6 +14,8 @@ def home(request):
     return render(request, 'home.html')
 def about(request):
     return render(request, 'about.html')
+def admin(request):
+    return redirect('admin')
 def employees_index(request):
     employees = Employee.objects.all()
     return render(request, 'employees/index.html', {
