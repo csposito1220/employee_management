@@ -7,6 +7,10 @@
     <span class="card-title">{{ employee.name }}</span>
     <p>Age: {{ employee.age }}</p>
     <p>Years Employed: {{ employee.years_employed }}</p>
+    <form method="post" action="{% url 'employees_update' employee.id %}">
+        {% csrf_token %}
+        <button type="submit">Edit</button>
+    </form>
     </div>
 </div>
 
