@@ -14,13 +14,31 @@ def home(request):
     return render(request, 'home.html')
 def about(request):
     return render(request, 'about.html')
+
 def admin(request):
     return redirect('admin')
+
 def employees_index(request):
     employees = Employee.objects.all()
+    skills = Skill.objects.all()
+    positions = Position.objects.all()
+    filtered_employees = employees
+    skill_id = request.GET.get('skill')
+    position_id = request.GET.get('position')
+
+    if skill_id:
+        filtered_employees = filtered_employees.filter(skills__id=skill_id)
+
+    if position_id:
+        filtered_employees = filtered_employees.filter(position__id=position_id)
+
     return render(request, 'employees/index.html', {
-        'employees': employees
+        'employees': employees,
+        'skills': skills,
+        'positions': positions,
+        'filtered_employees': filtered_employees,
     })
+
 def employees_details(request, employee_id):
     employee = Employee.objects.get(id=employee_id)
     id_list = employee.skills.all().values_list('id')
@@ -111,7 +129,7 @@ def unassoc_skill(request, employee_id, skill_id):
 
 class EmployeeUpdate(UpdateView):
    model = Employee
-   fields = ['name', 'age', 'years_employed', 'skills']
+   fields = ['name', 'age', 'years_employed', 'skills', 'position']
    success_url = '/employees'
 
 class EmployeeDelete(DeleteView):
