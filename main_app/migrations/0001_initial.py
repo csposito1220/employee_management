@@ -37,7 +37,7 @@ class Migration(migrations.Migration):
                 ('thursday_end', models.TimeField(blank=True, default='00:00', null=True)),
                 ('friday_start', models.TimeField(blank=True, default='00:00', null=True)),
                 ('friday_end', models.TimeField(blank=True, default='00:00', null=True)),
-                ('skills', models.ManyToManyField(to='main_app.Skill')),
+                ('skills', models.ManyToManyField(to='main_app.skill')),
             ],
         ),
     ]
