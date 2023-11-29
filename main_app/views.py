@@ -113,3 +113,7 @@ class EmployeeUpdate(UpdateView):
    model = Employee
    fields = ['name', 'age', 'years_employed', 'skills']
    success_url = '/employees'
+
+class EmployeeDelete(DeleteView):
+   model = Employee
+   success_url = '/employees'
