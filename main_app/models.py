@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 
-POSITIONS = (
+LEVELS = (
     ('L1', 'LEVEL 1'),
     ('L2', 'LEVEL 2'),
     ('L3', 'LEVEL 3'),
@@ -29,17 +29,25 @@ class Skill(models.Model):
     def __str__(self):
         return self.name
 
+
+class Position(models.Model):
+    name = models.CharField(max_length=50)
+    salary = models.IntegerField()
+    level = models.CharField(
+        choices=LEVELS,
+        max_length=2,
+        default=LEVELS[0][0],
+    )
+    def __str__(self):
+        return self.name
+    
     
 class Employee(models.Model):
     name = models.CharField(max_length=50)
     age = models.IntegerField()
     years_employed = models.IntegerField()
     skills = models.ManyToManyField(Skill)
-    position = models.CharField(
-        choices=POSITIONS,
-        max_length=2,
-        default=POSITIONS[0][0],
-    )
+    position = models.ForeignKey(Position, on_delete=models.CASCADE)
     monday_start = models.TimeField(blank=True, null=True, default='08:00')
     monday_end = models.TimeField(blank=True, null=True,  default='17:00')
     tuesday_start = models.TimeField(blank=True, null=True,  default='08:00')
