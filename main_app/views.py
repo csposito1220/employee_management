@@ -167,7 +167,7 @@ def add_photo(request, employee_id):
     return redirect('detail', employee_id=employee_id)
 
 def delete_photo(request, employee_id, photo_id):
-    photo = Photo.objects.all(Photo, id=photo_id)
+    photo = Photo.objects.get(id=photo_id)
     photo.delete()
     return redirect('detail', employee_id=employee_id)
 

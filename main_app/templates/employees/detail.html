@@ -6,7 +6,7 @@
     <div class="card-content">
     {% for photo in employee.photo_set.all %}
         <img class="responsive-img card-panel" src="{{photo.url}}">
-        <form method="post" action="{% url 'photo_delete' employee.id %}">
+        <form method="post" action="{% url 'photo_delete' employee.id photo.id %}">
             {% csrf_token %}
             <button type="submit">Delete Avatar</button>
         </form> 
