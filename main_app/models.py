@@ -2,6 +2,13 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 
+POSITIONS = (
+    ('L1', 'LEVEL 1'),
+    ('L2', 'LEVEL 2'),
+    ('L3', 'LEVEL 3'),
+    ('L4', 'LEVEL 4'),
+    ('L5', 'LEVEL 5'),
+)
 
 # Create your models here.   
 # class Profile(models.Model):
@@ -28,6 +35,11 @@ class Employee(models.Model):
     age = models.IntegerField()
     years_employed = models.IntegerField()
     skills = models.ManyToManyField(Skill)
+    position = models.CharField(
+        choices=POSITIONS,
+        max_length=2,
+        default=POSITIONS[0][0],
+    )
     monday_start = models.TimeField(blank=True, null=True, default='00:00')
     monday_end = models.TimeField(blank=True, null=True,  default='00:00')
     tuesday_start = models.TimeField(blank=True, null=True,  default='00:00')
@@ -38,6 +50,7 @@ class Employee(models.Model):
     thursday_end = models.TimeField(blank=True, null=True,  default='00:00')
     friday_start = models.TimeField(blank=True, null=True,  default='00:00')
     friday_end = models.TimeField(blank=True, null=True,  default='00:00')
+    
     # position = 
     def __str__(self):
         return self.name
