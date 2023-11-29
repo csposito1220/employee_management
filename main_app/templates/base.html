@@ -13,9 +13,12 @@
         <ul>
           <li><a href="/about">About</a></li>
           {% if user.is_authenticated %}
+          {% if user.is_superuser %}
+          <li><a href="{% url 'employee_create' %}">Create Employee</a></li>
+          {% else %}
+          {% endif %}
           <li><a href="/">Employee Management</a></li>
           <li><a href="/employees">View All Employees</a></li>
-          <li><a href="{% url 'employee_create' %}">Create Employee</a></li>
           <li><a href="/skills">All Skills</a></li>
           <li><a href="/skills/create">Add Skill</a></li>
           <li><a href="{% url 'logout' %}">Log Out</a></li>
