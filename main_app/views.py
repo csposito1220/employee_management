@@ -27,7 +27,7 @@ def employees_details(request, employee_id):
     'skills': skills_employee_doesnt_have,                                              
     })
     
-    
+
     
 class EmployeeCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
    model = Employee
