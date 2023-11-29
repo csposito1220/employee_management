@@ -12,6 +12,7 @@
     <nav>
         <ul>
           <li><a href="/about">About</a></li>
+          <li><a href="{% url 'home' %}">Home</a></li>
           {% if user.is_authenticated %}
           {% if user.is_superuser %}
           <li><a href="{% url 'admin' %}">Admin</a></li>
@@ -19,7 +20,6 @@
           <li><a href="{% url 'skill_create' %}">Add Skill</a></li>
           {% else %}
           {% endif %}
-          <li><a href="{% url 'home' %}">Employee Management</a></li>
           <li><a href="{% url 'index' %}">View All Employees</a></li>
           <li><a href="{% url 'skills_index' %}">All Skills</a></li>
           <li><a href="{% url 'logout' %}">Log Out</a></li>
