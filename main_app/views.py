@@ -7,7 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Skill, Employee, Availability
+from .models import Skill, Employee
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
