@@ -18,4 +18,11 @@
   <input type="submit" value="Submit!" class="btn">
 </form>
 
+<script>
+  const skillsEl = document.getElementById('id_skills');
+  M.FormSelect.init(skillsEl);
+
+  const positionsEl = document.getElementById('id_positions');
+  M.FormSelect.init(positionsEl);
+</script>
 {% endblock %}
