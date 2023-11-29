@@ -20,13 +20,24 @@ class Skill(models.Model):
 
     def __str__(self):
         return self.name
+class Availability(models.Model):
+    monday_start = models.TimeField(blank=True, null=True)
+    monday_end = models.TimeField(blank=True, null=True)
+    tuesday_start = models.TimeField(blank=True, null=True)
+    tuesday_end = models.TimeField(blank=True, null=True)
+    wednesday_start = models.TimeField(blank=True, null=True)
+    wednesday_end = models.TimeField(blank=True, null=True)
+    thursday_start = models.TimeField(blank=True, null=True)
+    thursday_end = models.TimeField(blank=True, null=True)
+    friday_start = models.TimeField(blank=True, null=True)
+    friday_end = models.TimeField(blank=True, null=True)
     
 class Employee(models.Model):
     name = models.CharField(max_length=50)
     age = models.IntegerField()
     years_employed = models.IntegerField()
     skills = models.ManyToManyField(Skill)
-    # availibility = 
+    availability = models.OneToOneField(Availability, on_delete=models.CASCADE,null=True, blank=True)
     # position = 
     def __str__(self):
         return self.name
