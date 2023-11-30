@@ -19,7 +19,9 @@
     {% endfor %}
   </select>
 
-  <button type="submit">Filter</button>
+  <button class="btn modal-trigger" data-target="employeeModal" type="submit">
+    Filter
+  </button>
 </form>
 
 {% for employee in employees %}
@@ -30,18 +32,52 @@
     </div>
   </div>
 </a>
-{% endfor %} {% if filtered_employees %}
-<h2>Filtered Employees</h2>
-<ul>
-  {% for emp in filtered_employees %}
-  <li><a href="{{ emp.get_absolute_url }}">{{ emp.name }}</a></li>
-  {% endfor %}
-</ul>
-{% endif %}
+{% endfor %}
+<div id="employeeModal" class="modal">
+  <div class="modal-content">
+    {% if filtered_employees %}
+    <h2>Filtered Employees</h2>
+    <ul>
+      {% for emp in filtered_employees %}
+      <li><a href="{{ emp.get_absolute_url }}">{{ emp.name }}</a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    <ul id="filteredEmployeesList">
+      <!-- Filtered employee details will be loaded here via JavaScript -->
+    </ul>
+  </div>
+</div>
 
 <script>
   const filterEl = document.getElementById("position");
   M.FormSelect.init(filterEl);
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var elems = document.querySelectorAll(".modal");
+    var instances = M.Modal.init(elems);
+
+    // Click event for the filter button
+    $(".modal-trigger").click(function () {
+      // Load filtered employee details via AJAX and populate the modal content
+      $.get("/path/to/your/filtered-employees-endpoint", function (data) {
+        // Assuming data is a list of filtered employees
+        var filteredEmployees = data.filteredEmployees;
+
+        // Clear existing content
+        $("#filteredEmployeesList").empty();
+
+        // Populate the modal content with filtered employee details
+        filteredEmployees.forEach(function (emp) {
+          $("#filteredEmployeesList").append("<li>" + emp.name + "</li>");
+        });
+
+        // Open the modal
+        var modalInstance = M.Modal.getInstance($("#employeeModal"));
+        modalInstance.open();
+      });
+    });
+  });
 </script>
 
 {% endblock %}
