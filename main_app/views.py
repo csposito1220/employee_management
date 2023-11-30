@@ -131,7 +131,7 @@ def unassoc_skill(request, employee_id, skill_id):
 
 class EmployeeUpdate(UpdateView):
    model = Employee
-   fields = ['name', 'age', 'years_employed', 'skills', 'position']
+   fields = ['age', 'years_employed', 'skills', 'position']
    success_url = '/employees'
 
 class EmployeeDelete(DeleteView):
@@ -154,7 +154,7 @@ class PositionCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
 
 class PositionUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
    model = Position
-   fields = ['name', 'salary', 'level']
+   fields = ['salary', 'level']
    success_url = '/positions'
 
    def test_func(self):

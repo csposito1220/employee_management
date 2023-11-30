@@ -1,15 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Employee Details</h1>
-<div class="card">
-    <div class="card-content">
+<h1>{{ employee.name }}'s Details</h1>
+<div class="card" id="details-card" >
+    <div class="card-content" id="avatar-container" >
     {% for photo in employee.photo_set.all %}
+        <div class="col s6" id="avatar" >
         <img class="responsive-img card-panel" src="{{photo.url}}">
         <form method="post" action="{% url 'photo_delete' employee.id photo.id %}">
             {% csrf_token %}
             <button type="submit">Delete Avatar</button>
-        </form> 
+        </form>
+        </div> 
+    </div>
     {% empty %}
         <div class="card-panel teal-text center-align">No Avatar Uploaded</div>
         <form action="{% url 'add_photo' employee.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
@@ -25,7 +28,8 @@
         <br><br>
         <button type="submit" class="btn">Upload Photo</button>
     </form> -->
-    <span class="card-title">{{ employee.name }}</span>
+    <div class="employee-details">
+    <!-- <span class="card-title">{{ employee.name }}</span> -->
     <p>Position: {{ employee.position }}</p>
     <p>Age: {{ employee.age }}</p>
     <p>Years Employed: {{ employee.years_employed }}</p>
@@ -46,7 +50,6 @@
     </form>
     {% endif %}
 </div>
-  
 </div>
 
 <hr>

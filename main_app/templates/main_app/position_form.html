@@ -1,15 +1,18 @@
-{% extends 'base.html' %}
-{% block content %}
-{% if object %}
-    <h1>Edit <span class="teal-text">{{object.name}}</span> Position</h1>
+{% extends 'base.html' %} {% block content %} {% if object %}
+<h1>Edit <span class="teal-text">{{object.name}}</span> Position</h1>
 {% else %}
-    <h1>Add Position</h1>
+<h1>Add Position</h1>
 {% endif %}
-    <form action="" method="POST">
-        {% csrf_token %}
-        <table>
-            {{ form.as_table }}
-        </table>
-            <input type="submit" value="Submit!" class="btn">
-    </form>
+<form action="" method="POST">
+  {% csrf_token %}
+  <table>
+    {{ form.as_table }}
+  </table>
+  <input type="submit" value="Submit!" class="btn" />
+</form>
+
+<script>
+  const levelEl = document.getElementById("id_level");
+  M.FormSelect.init(levelEl);
+</script>
 {% endblock %}
