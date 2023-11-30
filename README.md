@@ -12,5 +12,8 @@
 
 <p> This is the code behind the filtering function for employee lookup based upon the skills that they have and what position they hold in the company.</p>
 
+![image](Photo-code.png)
+
+<p> This is the code behind adding a photo as an avatar for the employees. The choose and upload photo functionality is hidden once a profile picture is chosen.</p>
 
 <h2>Next Steps</h2>

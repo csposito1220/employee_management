@@ -24,12 +24,6 @@
             <button type="submit" class="btn">Upload Photo</button>
         </form>
     {% endfor %} 
-    <!-- <form action="{% url 'add_photo' employee.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
-        {% csrf_token %}
-        <input type="file" name="photo-file">
-        <br><br>
-        <button type="submit" class="btn">Upload Photo</button>
-    </form> -->
     <div class="employee-details">
     <!-- <span class="card-title">{{ employee.name }}</span> -->
     <p>Position: {{ employee.position }}</p>
