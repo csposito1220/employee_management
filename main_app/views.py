@@ -18,7 +18,7 @@ def about(request):
     return render(request, 'about.html')
 
 def admin(request):
-    return redirect('admin')
+    return redirect('admin/')
 
 def employees_index(request):
     employees = Employee.objects.all()
