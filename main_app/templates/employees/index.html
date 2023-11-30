@@ -2,7 +2,7 @@
 
 <h1>List of Employees</h1>
 
-<form method="get" action="{% url 'index' %}">
+<form id="filterForm" method="get" action="{% url 'index' %}">
   <label for="skill">Filter by Skill:</label>
   <select name="skill" id="skill">
     <option value="" selected>All Skills</option>
@@ -19,7 +19,12 @@
     {% endfor %}
   </select>
 
-  <button class="btn modal-trigger" data-target="employeeModal" type="submit">
+  <button
+    id="filterButton"
+    class="btn modal-trigger"
+    data-target="employeeModal"
+    type="submit"
+  >
     Filter
   </button>
 </form>
@@ -33,19 +38,20 @@
   </div>
 </a>
 {% endfor %}
-<div id="employeeModal" class="modal">
-  <div class="modal-content">
-    {% if filtered_employees %}
+<div class="card">
+  <div class="card-content">
     <h2>Filtered Employees</h2>
-    <ul>
-      {% for emp in filtered_employees %}
-      <li><a href="{{ emp.get_absolute_url }}">{{ emp.name }}</a></li>
-      {% endfor %}
-    </ul>
+    {% if filtered_employees %}
+    <div class="card">
+      <div class="card-content">
+        <ul id="filteredEmployeesList">
+          {% for emp in filtered_employees %}
+          <li><a href="{{ emp.get_absolute_url }}">{{ emp.name }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
     {% endif %}
-    <ul id="filteredEmployeesList">
-      <!-- Filtered employee details will be loaded here via JavaScript -->
-    </ul>
   </div>
 </div>
 
@@ -53,31 +59,8 @@
   const filterEl = document.getElementById("position");
   M.FormSelect.init(filterEl);
 
-  document.addEventListener("DOMContentLoaded", function () {
-    var elems = document.querySelectorAll(".modal");
-    var instances = M.Modal.init(elems);
-
-    // Click event for the filter button
-    $(".modal-trigger").click(function () {
-      // Load filtered employee details via AJAX and populate the modal content
-      $.get("/path/to/your/filtered-employees-endpoint", function (data) {
-        // Assuming data is a list of filtered employees
-        var filteredEmployees = data.filteredEmployees;
-
-        // Clear existing content
-        $("#filteredEmployeesList").empty();
-
-        // Populate the modal content with filtered employee details
-        filteredEmployees.forEach(function (emp) {
-          $("#filteredEmployeesList").append("<li>" + emp.name + "</li>");
-        });
-
-        // Open the modal
-        var modalInstance = M.Modal.getInstance($("#employeeModal"));
-        modalInstance.open();
-      });
-    });
-  });
+  const filterSkillEl = document.getElementById("skill");
+  M.FormSelect.init(filterSkillEl);
 </script>
 
 {% endblock %}

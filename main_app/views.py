@@ -11,6 +11,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required, user_passes_test
 from .models import Skill, Employee, Position, Photo
+from django.http import JsonResponse
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
@@ -182,3 +183,16 @@ def delete_photo(request, employee_id, photo_id):
     photo.delete()
     return redirect('detail', employee_id=employee_id)
 
+def filtered_employees(request):
+    # Implement logic to filter and retrieve employee data
+    # ...
+
+    # For demonstration purposes, assuming 'filtered_data' is a list of filtered employees
+    filtered_data = [{'name': 'Employee 1'}, {'name': 'Employee 2'}]
+
+    return JsonResponse({'filteredEmployees': filtered_data})
+
+def your_view(request):
+    # Your existing code to filter employees
+    print(filtered_employees)  # Print the filtered employees to the console
+    return render(request, 'detail.html', {'filtered_employees': filtered_employees})
