@@ -7,6 +7,13 @@
 
 ![image](https://github.com/sfaigon/employee_management/assets/55246409/e37858eb-ee31-49a0-81ec-30049787d464)
 
+<p>There is a simple greeting with four options in the nav bar, an about page, sign up page, login page, and home page all the way on the right with the logo icon</p>
+
+<h4>Admin Logged in</h4>
+
+![image](https://github.com/sfaigon/employee_management/assets/55246409/e72b78cb-831d-457a-a1e8-13c9f5b7c803)
+
+<p>Admins have options such as Create Employee, Add Skill, Add Position. The first page after log in is the employee index. Here all employees are listed and there is a filter option to select employees with certain skills or positions. </p>
 
 
 <h2>Some Code Snippets</h2>
