@@ -14,7 +14,9 @@
         </div> 
     </div>
     {% empty %}
-        <div class="card-panel teal-text center-align">No Avatar Uploaded</div>
+        <div class="card-panel teal-text center-align col s6">
+            <img src="https://employeemanagement.s3.us-east-2.amazonaws.com/profilePH.png" alt="" class="responsive-img card-panel" id="avatar">
+        </div>
         <form action="{% url 'add_photo' employee.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
             {% csrf_token %}
             <input type="file" name="photo-file">
