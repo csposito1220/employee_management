@@ -1,6 +1,5 @@
 from django.urls import path
 from . import views
-from .views import admin
 	
 urlpatterns = [
 	path('', views.home, name = 'home'),
@@ -24,5 +23,4 @@ urlpatterns = [
     path('positions/<int:pk>/delete/', views.PositionDelete.as_view(), name='positions_delete'),
     path('employees/<int:employee_id>/add_photo/', views.add_photo, name='add_photo'),
     path('employees/<int:employee_id>/add_photo/<int:photo_id>/', views.delete_photo, name='photo_delete'),
-     path('filtered-employees/', views.filtered_employees, name='filtered_employees'),
 ]

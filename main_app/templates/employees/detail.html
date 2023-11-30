@@ -102,13 +102,13 @@
                     </select>
                 </div>
             </div>
+            {% if user.is_superuser %}
+            <button type="submit" class="btn">Add</button>
+            {% endif %}
+        </form>
                         {% endfor %}
         </div>
 
-                {% if user.is_superuser %}
-                <button type="submit" class="btn">Add</button>
-                {% endif %}
-            </form>
 
         {% else %}
         <h5>{{ employee.name }} Already Has All Skills Available</h5>
