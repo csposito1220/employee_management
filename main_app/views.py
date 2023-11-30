@@ -60,7 +60,14 @@ class EmployeeCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
         # The user passes the test if they are a superuser
         return self.request.user.is_superuser
 
+class EmployeeUpdate(UpdateView):
+   model = Employee
+   fields = ['age', 'years_employed', 'skills', 'position']
+   success_url = '/employees'
 
+class EmployeeDelete(DeleteView):
+   model = Employee
+   success_url = '/employees'
 
 class SkillList(ListView):
     model = Skill
@@ -76,8 +83,6 @@ class SkillCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
         # The user passes the test if they are a superuser
         return self.request.user.is_superuser
 
-
-
 class SkillDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
    model = Skill
    success_url = '/skills'
@@ -85,8 +90,6 @@ class SkillDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
    def test_func(self):
         # The user passes the test if they are a superuser
         return self.request.user.is_superuser
-
-
 
 class SkillUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
    model = Skill
@@ -103,8 +106,6 @@ class SignupForm(UserCreationForm):
    class Meta:
       model = User
       fields = ['username', 'email', 'password1', 'password2', 'is_superuser']
-    
-
     
 def signup(request):
   error_message = ''
@@ -129,14 +130,6 @@ def unassoc_skill(request, employee_id, skill_id):
     Employee.objects.get(id=employee_id).skills.remove(skill_id)
     return redirect("detail", employee_id=employee_id)
 
-class EmployeeUpdate(UpdateView):
-   model = Employee
-   fields = ['age', 'years_employed', 'skills', 'position']
-   success_url = '/employees'
-
-class EmployeeDelete(DeleteView):
-   model = Employee
-   success_url = '/employees'
 
 class PositionList(ListView):
     model = Position
