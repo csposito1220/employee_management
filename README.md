@@ -15,6 +15,49 @@
 
 <p>Admins have options such as Create Employee, Add Skill, Add Position. The first page after log in is the employee index. Here all employees are listed and there is a filter option to select employees with certain skills or positions. </p>
 
+<h4>Employee Detail</h4>
+
+![image](https://github.com/sfaigon/employee_management/assets/55246409/95d88111-7d7b-4c87-bf2a-0b868790df17)
+
+<p>Once and employee is clicked, their details show up. The employees position, age, years employed, availability, and avatar are shown on a card. Admins can edit and terminate employees . Below, the employees skills are shown and also a list of available new skills to learn. Admins can add and remove skills for an employee</p>
+
+![image](https://github.com/sfaigon/employee_management/assets/55246409/e04abdf2-97a7-4f52-bf2f-128c5f9bfb70)
+
+<h2>Admin Add Employee</h2>
+
+![image](https://github.com/sfaigon/employee_management/assets/55246409/4a9634ab-a661-4447-a9f3-95dfbb8c2f72)
+
+
+<h2>Admin Add Skill</h2>
+
+![image](https://github.com/sfaigon/employee_management/assets/55246409/3f674990-6689-49e6-a55b-6625e3d79c7f)
+
+<h2>All Skills</h2>
+
+![image](https://github.com/sfaigon/employee_management/assets/55246409/199981c3-4dd6-4bb2-9e24-5634e9d45d3b)
+
+<h2>Admin Add Position</h2>
+
+![image](https://github.com/sfaigon/employee_management/assets/55246409/9a46ea1d-555a-42b8-aff9-9b6838c733fa)
+
+
+<h2>All Positions</h2>
+
+![image](https://github.com/sfaigon/employee_management/assets/55246409/481e047f-ba05-409f-be6b-ccf159f00fef)
+
+<h2>About Page</h2>
+
+![image](https://github.com/sfaigon/employee_management/assets/55246409/319c5ffd-1b71-4da5-94a4-3a247a8e28aa)
+
+
+<h2>Normal User Sign in</h2>
+
+![image](https://github.com/sfaigon/employee_management/assets/55246409/fe2463ef-a588-4fc7-b94c-604f57691d26)
+
+<p>Normal users that sign up do not have the ability to edit or create</p>
+
+
+
 
 <h2>Some Code Snippets</h2>
 
