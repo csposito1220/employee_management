@@ -14,6 +14,11 @@ nav {
 .btn {
   background-color: #1976d2;
 }
+
+.btn-small {
+  background-color: #1976d2;
+}
+
 .responsive-img {
   max-width: 200px;
   max-height: 400px;
@@ -27,4 +32,15 @@ nav {
 .employee-details {
   flex: 2;
   padding-left: 30px;
+}
+
+#logo {
+  max-width: 70px;
+  max-height: 70px;
+}
+
+#home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

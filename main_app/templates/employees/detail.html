@@ -9,7 +9,7 @@
         <img class="responsive-img card-panel" src="{{photo.url}}">
         <form method="post" action="{% url 'photo_delete' employee.id photo.id %}">
             {% csrf_token %}
-            <button type="submit">Delete Avatar</button>
+            <button type="submit" class="btn-small" >Delete Avatar</button>
         </form>
         </div> 
     </div>
@@ -42,11 +42,12 @@
     {% if user.is_superuser %}
     <form method="post" action="{% url 'employees_update' employee.id %}">
         {% csrf_token %}
-        <button type="submit">Edit</button>
+        <button type="submit" class="btn-small" >Edit Employee</button>
     </form>
+    <br>
     <form method="post" action="{% url 'employees_delete' employee.id %}">
         {% csrf_token %}
-        <button type="submit">Remove Employee</button>
+        <button type="submit" class="btn-small" >Remove Employee</button>
     </form>
     {% endif %}
 </div>

@@ -5,40 +5,57 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Employee Management</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style.css' %}"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </head>
   <body>
     <header class="navbar-fixed">
-    <nav>
-      <div class="nav-wrapper">
-        <ul>
-          <li><a href="/about">About</a></li>
-          <li><a href="{% url 'home' %}">Home</a></li>
-          {% if user.is_authenticated %}
-          {% if user.is_superuser %}
-          <li><a href="{% url 'admin' %}">Admin</a></li>
-          <li><a href="{% url 'employee_create' %}">Create Employee</a></li>
-          <li><a href="{% url 'skill_create' %}">Add Skill</a></li>
-          <li><a href="{% url 'position_create' %}">Add Position</a></li>
-          {% else %}
-          {% endif %}
-          <li><a href="{% url 'index' %}">View All Employees</a></li>
-          <li><a href="{% url 'skills_index' %}">All Skills</a></li>
-          <li><a href="{% url 'positions_index' %}">All Positions</a></li>
-          <li><a href="{% url 'logout' %}">Log Out</a></li>
-          {% else %}
-          <li><a href="{% url 'signup' %}">Sign Up</a></li>
-          <li><a href="{% url 'login' %}">Log In</a></li>
-          {% endif %}
-        </ul>
-      </div>
-    </nav>
+      <nav>
+        <div class="nav-wrapper">
+          <ul class="right">
+            <li>
+              <a href="{% url 'home' %}" class="right"
+                ><img
+                  src="https://employeemanagement.s3.us-east-2.amazonaws.com/project3+logo.png"
+                  alt="Home"
+                  class="circle responsive-img"
+                  id="logo"
+              /></a>
+            </li>
+          </ul>
+          <ul>
+            <li><a href="/about">About</a></li>
+            {% if user.is_authenticated %} {% if user.is_superuser %}
+            <li><a href="{% url 'admin' %}">Admin</a></li>
+            <li><a href="{% url 'employee_create' %}">Create Employee</a></li>
+            <li><a href="{% url 'skill_create' %}">Add Skill</a></li>
+            <li><a href="{% url 'position_create' %}">Add Position</a></li>
+            {% else %} {% endif %}
+            <li><a href="{% url 'index' %}">View All Employees</a></li>
+            <li><a href="{% url 'skills_index' %}">All Skills</a></li>
+            <li><a href="{% url 'positions_index' %}">All Positions</a></li>
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+            {% else %}
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            <li><a href="{% url 'login' %}">Log In</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
     </header>
     <main>{% block content %} {% endblock %}</main>
     <footer class="page-footer">
-      <div class="right">All Rights Reserved, &copy; 2023 Employee Management &nbsp;</div>
-   </footer>
+      <div class="right">
+        All Rights Reserved, &copy; 2023 Employee Management &nbsp;
+      </div>
+    </footer>
   </body>
 </html>
