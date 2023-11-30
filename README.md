@@ -27,7 +27,6 @@
 
 ![image](https://github.com/sfaigon/employee_management/assets/55246409/4a9634ab-a661-4447-a9f3-95dfbb8c2f72)
 
-
 <h2>Admin Add Skill</h2>
 
 ![image](https://github.com/sfaigon/employee_management/assets/55246409/3f674990-6689-49e6-a55b-6625e3d79c7f)
@@ -40,7 +39,6 @@
 
 ![image](https://github.com/sfaigon/employee_management/assets/55246409/9a46ea1d-555a-42b8-aff9-9b6838c733fa)
 
-
 <h2>All Positions</h2>
 
 ![image](https://github.com/sfaigon/employee_management/assets/55246409/481e047f-ba05-409f-be6b-ccf159f00fef)
@@ -49,15 +47,11 @@
 
 ![image](https://github.com/sfaigon/employee_management/assets/55246409/319c5ffd-1b71-4da5-94a4-3a247a8e28aa)
 
-
 <h2>Normal User Sign in</h2>
 
 ![image](https://github.com/sfaigon/employee_management/assets/55246409/fe2463ef-a588-4fc7-b94c-604f57691d26)
 
 <p>Normal users that sign up do not have the ability to edit or create</p>
-
-
-
 
 <h2>Some Code Snippets</h2>
 
@@ -69,4 +63,13 @@
 
 <p> This is the code behind adding a photo as an avatar for the employees. The choose and upload photo functionality is hidden once a profile picture is chosen.</p>
 
+![Alt text](image.png)
+
+<p> This code makes sure that people signing up are not given superuser status, which limits what functions they will have access to.</p>
+
 <h2>Next Steps</h2>
+
+<ul>
+    <li>When someone signs up or and employee is created, a user is created that corelates with eachother.</li>
+    <li>A user that does not have superuser status will only be able to edit their own details page.</li>
+    <li>Filtered employee list shows up as a modal.</li>

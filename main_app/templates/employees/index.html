@@ -22,7 +22,7 @@
   <button
     id="filterButton"
     class="btn modal-trigger"
-    data-target="employeeModal"
+    data-target="filteredEmployeesModal"
     type="submit"
   >
     Filter
@@ -37,11 +37,10 @@
     </div>
   </div>
 </a>
-{% endfor %}
-<div class="card">
+{% endfor %} {% if filtered_employees %}
+<div id="filteredEmployees" class="hidden">
   <div class="card-content">
     <h2>Filtered Employees</h2>
-    {% if filtered_employees %}
     <div class="card">
       <div class="card-content">
         <ul id="filteredEmployeesList">
