@@ -10,6 +10,7 @@
 
 ![image](https://github.com/sfaigon/employee_management/assets/55246409/3458db16-a387-4d7b-aa26-5e8ec63bc16e)
 
+<p> This is the code behind the filtering function for employee lookup based upon the skills that they have and what position they hold in the company.</p>
 
 
 <h2>Next Steps</h2>
