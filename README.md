@@ -2,6 +2,7 @@
 <h2>Web Description - Employee Management</h2>
 
 <p>Employee Management is a webpage where company admins can create and manage their employees. Normal employess can sign up and view everyone in the company but are unable to edit any information. With this webpage, managers can list out all employees positions, skills, and their availability schedule and change it as needed. Managers can also then filter out their employees based on their skill and what position they hold in order to find an employee to fill in or to promote.</p>
+<h4>Link to Application: https://nguyenan-aab7bd19135d.herokuapp.com/</h4>
 <h2>Employee Management Picture</h2>
 <h4>Welcome page</h4>
 
