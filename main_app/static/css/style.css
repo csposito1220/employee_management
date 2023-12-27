@@ -48,3 +48,15 @@ nav {
 .hidden {
   display: none;
 }
+
+.title {
+  text-align: center;
+}
+
+#form-card {
+  margin: 30px;
+}
+
+#filterForm {
+  margin: 30px;
+}

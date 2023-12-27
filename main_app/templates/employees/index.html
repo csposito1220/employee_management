@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>List of Employees</h1>
+<h1 class="title">List of Employees</h1>
 
 <form id="filterForm" method="get" action="{% url 'index' %}">
   <label for="skill">Filter by Skill:</label>
@@ -29,28 +29,30 @@
   </button>
 </form>
 
-{% for employee in employees %}
-<a href="/employees/{{ employee.id }}">
-  <div class="card">
-    <div class="card-content">
-      <span class="card-title">{{ employee.name }}</span>
-    </div>
-  </div>
-</a>
-{% endfor %} {% if filtered_employees %}
-<div id="filteredEmployees" class="hidden">
-  <div class="card-content">
-    <h2>Filtered Employees</h2>
+<div class="card" id="form-card">
+  {% for employee in employees %}
+  <a href="/employees/{{ employee.id }}">
     <div class="card">
       <div class="card-content">
-        <ul id="filteredEmployeesList">
-          {% for emp in filtered_employees %}
-          <li><a href="{{ emp.get_absolute_url }}">{{ emp.name }}</a></li>
-          {% endfor %}
-        </ul>
+        <span class="card-title">{{ employee.name }}</span>
       </div>
     </div>
-    {% endif %}
+  </a>
+  {% endfor %} {% if filtered_employees %}
+  <div id="filteredEmployees" class="hidden">
+    <div class="card-content">
+      <h2>Filtered Employees</h2>
+      <div class="card">
+        <div class="card-content">
+          <ul id="filteredEmployeesList">
+            {% for emp in filtered_employees %}
+            <li><a href="{{ emp.get_absolute_url }}">{{ emp.name }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% endif %}
+    </div>
   </div>
 </div>
 

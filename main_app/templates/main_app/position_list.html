@@ -1,39 +1,40 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>All Positions</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Position</th>
-      <th>Salary</th>
-      <th>Level</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for position in object_list %}
-    <tr>
-      <td>{{ position.name }}</td>
-      <td>${{ position.salary }}</td>
-      <td>{{ position.level }}</td>
-      <td>
-        {% if user.is_superuser %}
-        <form method="post" action="{% url 'positions_delete' position.id %}">
-          {% csrf_token %}
-          <button type="submit" class="btn">Delete</button>
-        </form>
-      </td>
-      <td>
-        <form method="post" action="{% url 'positions_update' position.id %}">
-          {% csrf_token %}
-          <button type="submit" class="btn">Edit</button>
-        </form>
-        {% endif %}
-      </td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-
+<h1 class="title">All Positions</h1>
+<div class="card" id="form-card">
+  <table>
+    <thead>
+      <tr>
+        <th>Position</th>
+        <th>Salary</th>
+        <th>Level</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for position in object_list %}
+      <tr>
+        <td>{{ position.name }}</td>
+        <td>${{ position.salary }}</td>
+        <td>{{ position.level }}</td>
+        <td>
+          {% if user.is_superuser %}
+          <form method="post" action="{% url 'positions_delete' position.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn">Delete</button>
+          </form>
+        </td>
+        <td>
+          <form method="post" action="{% url 'positions_update' position.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn">Edit</button>
+          </form>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 {% endblock %}

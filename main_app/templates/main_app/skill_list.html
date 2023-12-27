@@ -1,36 +1,38 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>All Skills</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Skill</th>
-      <th>Pay Increase</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for skill in object_list %}
-    <tr>
-      <td>{{ skill.name }}</td>
-      <td>{{ skill.pay_increase }}%</td>
-      <td>
-        {% if user.is_superuser %}
-        <form method="post" action="{% url 'skills_delete' skill.id %}">
-          {% csrf_token %}
-          <button type="submit" class="btn">Delete</button>
-        </form>
-      </td>
-      <td>
-        <form method="post" action="{% url 'skills_update' skill.id %}">
-          {% csrf_token %}
-          <button type="submit" class="btn">Edit</button>
-        </form>
-        {% endif %}
-      </td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+<h1 class="title">All Skills</h1>
+<div class="card" id="form-card">
+  <table>
+    <thead>
+      <tr>
+        <th>Skill</th>
+        <th>Pay Increase</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for skill in object_list %}
+      <tr>
+        <td>{{ skill.name }}</td>
+        <td>{{ skill.pay_increase }}%</td>
+        <td>
+          {% if user.is_superuser %}
+          <form method="post" action="{% url 'skills_delete' skill.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn">Delete</button>
+          </form>
+        </td>
+        <td>
+          <form method="post" action="{% url 'skills_update' skill.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn">Edit</button>
+          </form>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 {% endblock %}
